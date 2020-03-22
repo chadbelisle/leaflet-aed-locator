@@ -22,7 +22,7 @@ Directions to install a local copy and use for own purpose.
 * [Leaflet](https://github.com/Leaflet/Leaflet) - Mapping Framework
 * [GeoJSON Path Finder - Browser Branch](https://github.com/nickw1/geojson-path-finder/tree/browser) - GeoJSON Network Analysis Without Node.js
 * [Leaflet Indoor](https://github.com/cbaines/leaflet-indoor) - Indoor Mapping Functionality
-
+* [Turf.js](https://turfjs.org/) - Advanced Geospatial Analysis
 
 ## Authors
 
@@ -39,3 +39,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * [Nick Whitelegg](https://github.com/nickw1)
 * [Christopher Baines](https://github.com/cbaines)
 * [Leaflet](https://github.com/orgs/Leaflet/people)
+* [Turf.js](https://github.com/orgs/Turfjs/people)
