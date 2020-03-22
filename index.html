@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" href="leaflet/images/marker-icon.png" />
+    <title>Selkirk College | AED Locator</title>
+
+    <!-- link to the leaflet javascript library -->
+    <script src="leaflet/leaflet.js"></script>
+
+    <!-- jquery library -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <!-- link to the leaflet CSS sheet -->
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+
+    <!-- my geojson layers -->
+    <script src="geoJSON/aed.js"></script>
+    <script src="geoJSON/alldata.js"></script>
+    <script src="geoJSON/network.js"></script>
+    <script src="geoJSON/vertices.js"></script>
+
+    <!-- leafelt indoor -->
+    <script src="leaflet-indoor-master/leaflet-indoor.js"></script>
+
+    <!-- path finder -->
+    <script src="https://unpkg.com/tinyqueue@2.0.0/tinyqueue.min.js"></script>
+    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    <script src="geojson-path-finder-browser/compactor.js"></script>
+    <script src="geojson-path-finder-browser/dijkstra.js"></script>
+    <script src="geojson-path-finder-browser/index.js"></script>
+    <script src="geojson-path-finder-browser/preprocessor.js"></script>
+    <script src="geojson-path-finder-browser/round-coord.js"></script>
+    <script src="geojson-path-finder-browser/topology.js"></script>
+
+    <!-- my CSS -->
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div id="overlay">
+      <div id="overlay-content">
+        <h1>AED Locator</h1>
+        <p>Note: You must allow location access!</p>
+
+        <p>
+          You have activated the emergency AED Locator app. If there is a
+          suspected cardiac arrest situation occuring, please follow the
+          directions below before proceeding to locate an AED
+        </p>
+        <br />
+        <ul>
+          <li>Have someone <strong>call 911 immediately</strong></li>
+          <li>Have someone trained in CPR begin to perfrom CPR</li>
+          <ul>
+            <li><strong>15 Chest Compressions</strong></li>
+            <li><strong>2 Breaths</strong></li>
+            <li><strong>Repeat Until Help Arrives</strong></li>
+          </ul>
+        </ul>
+        <br />
+
+        <form id="greetings">
+          <h2>Please Select Current Floor</h2>
+          <br />
+
+          <select id="floorChoice" onchange="advise(this)">
+            <option value="-1">Lowerfloor</option>
+            <option value="0" selected>Mainfloor</option>
+            <option value="1">Upperfloor</option> </select
+          ><br /><br />
+          <button id="startApp" type="button">Find AED</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- my javaScript -->
+    <script src="js/map_script.js"></script>
+  </body>
+</html>
+
+<!-- end of HTML -->

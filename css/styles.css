@@ -1,0 +1,256 @@
+/* CSS Styling for AED Locator */
+/* Chad Belisle */
+/* Last Updated March 20th, 2020 */
+
+/* ERICS RESET */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0b1 | 201101  
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* end of Eric's reset styles */
+
+/* styles for mobile first design */
+
+/* global styles */
+
+body {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+#map {
+  height: 100%;
+  width: 100vw;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* splash screen styles */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.8;
+  z-index: 1001;
+}
+
+#overlay-content {
+  position: absolute;
+  display: none;
+  max-width: 100%;
+  width: 80%;
+  height: 70%;
+  padding: 16px;
+  border: 16px solid #f1b600;
+  border-radius: 2em;
+  background-color: #911a28;
+  z-index: 1002;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  overflow: scroll;
+}
+
+#overlay-content > h1:nth-child(1) {
+  text-align: center;
+  font-size: 1.3em;
+  color: whitesmoke;
+}
+
+#overlay-content > p:nth-child(2) {
+  text-align: center;
+  color: whitesmoke;
+  padding: 0.5em;
+}
+
+#overlay-content > ul:nth-child(5),
+#overlay-content > p:nth-child(3),
+#overlay-content > ul:nth-child(5) > ul:nth-child(3) {
+  text-align: center;
+  list-style: none;
+}
+
+#greetings > h2:nth-child(1) {
+  text-align: center;
+  font-size: 1em;
+  color: whitesmoke;
+}
+
+#greetings {
+  text-align: center;
+}
+
+#startApp {
+  background-color: #4b040d;
+  border: solid whitesmoke 0.1em;
+  border-radius: 0.9em;
+  color: white;
+  padding: 0.5em 0.8em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* zoom modfication*/
+a.leaflet-control-zoom-in,
+a.leaflet-control-zoom-out {
+  background-color: #f1b600;
+  color: black;
+}
+
+a.leaflet-control-zoom-in:hover,
+a.leaflet-control-zoom-out:hover,
+a.leaflet-buttons-control-button:hover {
+  background-color: #911a28;
+  color: white;
+}
+
+/* floor buttons */
+a.leaflet-buttons-control-button {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.leaflet-touch .leaflet-bar a {
+  width: 40px;
+}
+
+/* custom user marker with inflate animation */
+
+/* remove background on svg */
+.leaflet-div-icon {
+  background: none !important;
+  border: none !important;
+}
+
+/* set circle icon to inflate/deflate every 4sec */
+.leaflet-div-icon circle {
+  animation: locater-inflate 4s ease infinite;
+}
+
+/* animation */
+@keyframes locater-inflate {
+  0% {
+    stroke-width: 1;
+  }
+  50% {
+    stroke-width: 3;
+    transform: scale(0.8, 0.8);
+  }
+  100% {
+    stroke-width: 1;
+  }
+}
+
+/* show the route to the aed stroke width large first and then decrease in size */
+path.leaflet-interactive:nth-child(6489) {
+  animation: aed-route 2s ease;
+}
+
+@keyframes aed-route {
+  0% {
+    stroke-width: 5;
+  }
+  50% {
+    stroke-width: 1;
+  }
+  100% {
+    stroke-width: 3;
+  }
+}
+
+/* end of CSS */
