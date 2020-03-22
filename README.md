@@ -1,6 +1,6 @@
 # Leaflet AED Locator
 
-An app to locate the nearest AED in an indoor setting and provide a user the most effcient route. This was a bachelor thesis project.
+An app to locate the nearest AED in an indoor setting and provide a user the most efficient route. This was a bachelor thesis project conducted at Selkirk College in Castlegar, BC, Canada.
 
 
 ## Getting Started
@@ -19,15 +19,14 @@ Directions to install a local copy and use for own purpose.
 
 ## Built With
 
-* [Leaflet](https://github.com/Leaflet/Leaflet) - Mapping Framwork
-* [GeoJSON Path Finder](https://github.com/perliedman/geojson-path-finder) - GeoJSON Network Analysis
-* [GeoJSON Path Finder - Broswer Branch](https://github.com/nickw1/geojson-path-finder/tree/browser) - GeoJSON Network Analysis Without Node.js
+* [Leaflet](https://github.com/Leaflet/Leaflet) - Mapping Framework
+* [GeoJSON Path Finder - Browser Branch](https://github.com/nickw1/geojson-path-finder/tree/browser) - GeoJSON Network Analysis Without Node.js
 * [Leaflet Indoor](https://github.com/cbaines/leaflet-indoor) - Indoor Mapping Functionality
 
 
 ## Authors
 
-* **Chad Belisle** - *Initial work* - [BelisleC](https://github.com/BelisleC)
+* **Chad Belisle** - *Initial Work* - [BelisleC](https://github.com/BelisleC)
 
 
 ## License

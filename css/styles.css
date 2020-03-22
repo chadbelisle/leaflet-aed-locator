@@ -2,7 +2,7 @@
 /* Chad Belisle */
 /* Last Updated March 20th, 2020 */
 
-/* ERICS RESET */
+/* ERIC'S RESET */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0b1 | 201101  
 */
@@ -185,7 +185,7 @@ strong {
   cursor: pointer;
 }
 
-/* zoom modfication*/
+/* zoom modification */
 a.leaflet-control-zoom-in,
 a.leaflet-control-zoom-out {
   background-color: #f1b600;

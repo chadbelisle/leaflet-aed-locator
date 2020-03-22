@@ -3,7 +3,7 @@
 /* Last updated: March 20th, 2020 */
 
 
-// splash screen to welcome user with instructions and obtain current floor position in building. 
+// splash screen to welcome user with instructions and obtain current floor position in building
 $.fn.center = function() {
   this.css("position", "absolute");
   this.css(
@@ -38,25 +38,24 @@ function advise(x) {
   switch (x.value) {
     case "-1":
       alert(
-        "No AED on the lowerfloor, please proceed to mainfloor before pressing Find AED"
+        "No AED on the lower floor, please proceed to main floor before pressing Find AED"
       );
       break;
     case "0":
-      // alert("Please follow route to nearest AED");
       break;
     case "1":
       alert(
-        "No AED on the upperfloor, please proceed to mainfloor before pressing Find AED"
+        "No AED on the upper floor, please proceed to main floor before pressing Find AED"
       );
       break;
   }
 }
 
-// creates  a map leaflet map platform.
-// set focal point of map to Selkirk College Castlegar, BC at a 19 zoom.
+// creates a map leaflet map platform
+// set focal point of map to Selkirk College Castlegar, BC at a 19 zoom
 var map = L.map("map").setView([49.3121, -117.6523], 19);
 
-// adds streets basemap layer from mapbox.
+// adds streets basemap layer from mapbox
 newmap = L.tileLayer(
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
   {
@@ -70,7 +69,7 @@ newmap = L.tileLayer(
   }
 ).addTo(map);
 
-// set inital locate of user, watch set to true triggers onlocationFound to rerun. setView false so it doesnt change users zoom they are in.
+// set initial locate of user, watch set to true triggers onlocationFound to rerun. setView false so it doesn't change users zoom they are in
 map.locate({
   setView: false,
   watch: true,
@@ -80,12 +79,12 @@ map.locate({
   maximumAge: 60000
 });
 
-// set inital user position to null
+// set initial user position to null
 var user_position = null;
 
 // this function re runs asynchronously as the user moves and will update
 function onLocationFound(e) {
-  //   store inital user lat long for routing later, this will be used to snap user to network
+  //   store initial user lat long for routing later, this will be used to snap user to network
   locateLatlng = e.latlng;
 
   // retrieve lat and long from HTML Geolocation API and convert to a turf.js point that will be used to run the spatial analysis
@@ -97,7 +96,7 @@ function onLocationFound(e) {
   // calculates the nearest network point to the users location
   newNearest = turf.nearestPoint(newTargetPoint, points);
 
-  // returns the coordinates to the nearest network point. This is now the users "start" location for the routing.
+  // returns the coordinates to the nearest network point. This is now the users "start" location for the routing
   newStart = turf.points([newNearest.geometry.coordinates]);
 
   // custom svg marker icon - familiar blue dot
@@ -109,14 +108,13 @@ function onLocationFound(e) {
     iconAnchor: [9.5, 9.5]
   });
 
-  // adds marker to nearest network point, this will auto update removing old marker and adding new marker on the path to the AED.  note: This is not the true user location, this is the point on the network closest to the user, theoretically when following the path the user should appear on the path only. view will follow user and pan to locations without changing the zoom
+  // adds marker to nearest network point, this will auto update removing old marker and adding new marker on the path to the AED. note: This is not the true user location, this is the point on the network closest to the user, theoretically when following the path the user should appear on the path only. view will follow user and pan to locations without changing the zoom
   if (user_position == null) {
     user_position = L.marker(
       newStart.features[0].geometry.coordinates.reverse(),
       { icon: icon }
     ).addTo(map);
     map.setView([user_position._latlng.lat, user_position._latlng.lng], 20);
-    // map.panTo([user_position._latlng.lat,user_position._latlng.lng]);
   } else {
     map.removeLayer(user_position);
     user_position = L.marker(
@@ -136,7 +134,7 @@ function onLocationError(e) {
 map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
 
-// Floor Selection - This addes indoor floor functionality useing Leaflet Indoors Plugin
+// Floor Selection - This adds indoor floor functionality using Leaflet Indoors Plugin
 // https://github.com/va2ron1/leaflet-indoor/commit/f2fb557cd738131b5b8599ff9c7d8d65f60567b6
 
 // Adds all layers as 1 single layer selectable by level to be able to switch floors
@@ -156,14 +154,14 @@ var indoorLayer = new L.Indoor(data, {
   opacity: 0.5
 });
 
-// add event listener to select floor layer to be added based on user input from the splash screen.
+// add event listener to select floor layer to be added based on user input from the splash screen
 document.getElementById("startApp").addEventListener("click", function() {
   addLevelControl();
 });
 
-// addes UI element
+// adds UI element
 function addLevelControl() {
-  // set the initial level to show, this should represent the current floor that the cardiac arrest is occuring. User will select current floor and it will auto set level.
+  // set the initial level to show, this should represent the current floor that the cardiac arrest is occurring. User will select current floor and it will auto set level
 
   indoorLayer.setLevel(userFloor);
 
@@ -193,7 +191,7 @@ function addLevelControl() {
 
 // ROUTING CAPABILITY
 
-// If user selects main floor as current location, the routing function will load and direct user from current location to the nearest AED. If user selects basement or upper floor, instructions to locate nearest staircase and ascend or descend a level and then start app.
+// If user selects main floor as current location, the routing function will load and direct user from current location to the nearest AED. If user selects basement or upper floor, instructions to locate nearest staircase and ascend or descend a level and then start app
 
 // Takes geolocation coordinates for user and returns a target point that will be used to calculate start point and find nearest AED
 function getUserCoord() {
@@ -221,12 +219,12 @@ function getUserCoord() {
 }
 // end of getUserCoord
 
-// Start route location (on network vertice)
+// Start route location (on network node)
 function start() {
   // calculates the nearest network node to the users location
   var nearest = turf.nearestPoint(targetPoint, points);
 
-  // returns the coordinates to the nearest network vertice. This is now the users "start" location for the routing.
+  // returns the coordinates to the nearest network node. This is now the users "start" location for the routing
   start = turf.points([nearest.geometry.coordinates]);
 
   return start;
@@ -240,16 +238,16 @@ function finish() {
   // calculates the nearest AED to the users location
   var nearest = turf.nearestPoint(targetPoint, aed_locations);
 
-  // returns the coordinates to the nearest AED location. This is now the users finish location for the routing.
+  // returns the coordinates to the nearest AED location. This is now the users finish location for the routing
   finish = turf.points([nearest.geometry.coordinates]);
 
   return finish;
 }
 // end finish
 
-// pathfinder will find the least cost path in a topographic network. Both the start and finish points MUST share coordinates with a network vertice.
+// pathfinder will find the least cost path in a topographic network. Both the start and finish points MUST share coordinates with a network node
 
-// uses geoJSON pathfinder to calculate the shortest path. The output of the pathfinder.findPath is an object with path coordinates and a path weight(distance in metres) The coordinates are output lat long and need to be converted to long lat for leaflet.
+// uses geoJSON pathfinder to calculate the shortest path. The output of the pathfinder.findPath is an object with path coordinates and a path weight(distance in metres) The coordinates are output lat long and need to be converted to long lat for leaflet
 
 function aedroute() {
   var pathFinder = new PathFinder(geojson, { precision: 1e-8 });
@@ -259,12 +257,12 @@ function aedroute() {
 }
 // end aedroute
 
-// pathfinder seems to create duplicate coordinates for one of the AED points, this causes a set of coordinates to not be reveresed into the proper format. The following removes any duplicates found in the list and then creates a new object array with the coordinates for the path.
+// pathfinder seems to create duplicate coordinates for one of the AED points, this causes a set of coordinates to not be reversed into the proper format. The following removes any duplicates found in the list and then creates a new object array with the coordinates for the path
 
 var newArray = [];
 var uniqueObject = {};
 
-// there seems to be a duplicate set of coordinates returned in some cases. Following fuction will compile all coordinates found in the path list and push to newArray
+// there seems to be a duplicate set of coordinates returned in some cases. Following function will compile all coordinates found in the path list and push to newArray
 function removeDuplicate() {
   // Loop the array elements and find all 'lat' values
   for (let i in path.path) {
@@ -281,7 +279,7 @@ function removeDuplicate() {
 }
 // removeDuplicate
 
-// Take list pf paths coordinates and revereses them into proper format for the leaflet to render
+// Take list of path coordinates and reverses them into proper format for the leaflet to render
 function routeVertices() {
   pointList = [];
 
@@ -292,7 +290,7 @@ function routeVertices() {
 }
 // end routeVertices
 
-// takes the reveresed coordinates and creats a Polyline from the userlocation(on the network)to the aed and displays it on the map while focusing on the route extent.
+// takes the reversed coordinates and creates a Polyline from the userlocation(on the network)to the aed and displays it on the map while focusing on the route extent
 function drawRoute() {
   var aedRoute = new L.Polyline(pointList, {
     color: "red",
@@ -304,8 +302,8 @@ function drawRoute() {
   // focuses on route extent
   map.fitBounds(aedRoute.getBounds());
 
-  // Add distance to AED to map and estimated time.
-  // Time calculated using the recommended time it takes to travel 100m to retrieve an AED. 100m/2min or 50m/min. Distance value is the path weight returned from the pathfiner.findPath function
+  // Add distance to AED to map and estimated time
+  // Time calculated using the recommended time it takes to travel 100m to retrieve an AED. 100m/2min or 50m/min. Distance value is the path weight returned from the pathfinder.findPath function
 
   // Time = distance * 1/50
   L.Control.textbox = L.Control.extend({
@@ -313,7 +311,7 @@ function drawRoute() {
       var text = L.DomUtil.create("div");
       text.id = "info_text";
 
-      // conditional time formatting to display seconds or minutes depending on length.
+      // conditional time formatting to display seconds or minutes depending on length
       if ((path.weight * 1000) / 50 <= 1.1) {
         text.innerHTML =
           "Distance to AED: " +
