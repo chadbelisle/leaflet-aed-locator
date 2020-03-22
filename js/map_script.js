@@ -3,7 +3,9 @@
 /* Last updated: March 20th, 2020 */
 
 
-// splash screen to welcome user with instructions and obtain current floor position in building
+// splash screen to welcome user with instructions and obtain current floor position in building 
+// code used and modified from:
+// https://www.sitepoint.com/community/t/how-do-you-make-a-javascript-splash-page/44555/3
 $.fn.center = function() {
   this.css("position", "absolute");
   this.css(
