@@ -53,6 +53,10 @@ function advise(x) {
   }
 }
 
+
+
+
+
 // creates a map leaflet map platform
 // set focal point of map to Selkirk College Castlegar, BC at a 19 zoom
 var map = L.map("map").setView([49.3121, -117.6523], 19);
@@ -136,6 +140,10 @@ function onLocationError(e) {
 map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
 
+
+
+
+
 // Floor Selection - This adds indoor floor functionality using Leaflet Indoors Plugin
 // https://github.com/va2ron1/leaflet-indoor/commit/f2fb557cd738131b5b8599ff9c7d8d65f60567b6
 
@@ -191,6 +199,11 @@ function addLevelControl() {
 }
 // end addLevelControl
 
+
+
+
+
+
 // ROUTING CAPABILITY
 
 // If user selects main floor as current location, the routing function will load and direct user from current location to the nearest AED. If user selects basement or upper floor, instructions to locate nearest staircase and ascend or descend a level and then start app
@@ -235,7 +248,7 @@ function start() {
 
 // Finish route/AED location
 
-// // calculates the nearest network node to the users location, and returns the nearest AED
+// calculates the nearest network node to the users location, and returns the nearest AED
 function finish() {
   // calculates the nearest AED to the users location
   var nearest = turf.nearestPoint(targetPoint, aed_locations);
@@ -279,7 +292,7 @@ function removeDuplicate() {
     newArray.push(uniqueObject[i]);
   }
 }
-// removeDuplicate
+// end removeDuplicate
 
 // Take list of path coordinates and reverses them into proper format for the leaflet to render
 function routeVertices() {
@@ -346,7 +359,15 @@ function drawRoute() {
 }
 // end of drawRoute
 
+
+
+
+
 // Attribution
 map.attributionControl.setPrefix("Created By: Chad Belisle");
+
+
+
+
 
 // END OF SCRIPT
