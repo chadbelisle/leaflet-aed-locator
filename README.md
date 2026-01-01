@@ -5,7 +5,7 @@ An app to locate the nearest AED in an indoor setting and provide a user the mos
 
 ## Getting Started
 
-* [Live Demo](https://chadbelisle.me/aed_locator/)
+* [Live Demo] - I'm never going to financially recover from this.
 
 
 ### Installing
