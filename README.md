@@ -26,7 +26,7 @@ Directions to install a local copy and use for own purpose.
 
 ## Authors
 
-* **Chad Belisle** - *Initial Work* - [BelisleC](https://github.com/BelisleC)
+* **Chad Belisle** - *Initial Work* - https://github.com/chadbelisle
 
 
 ## License
